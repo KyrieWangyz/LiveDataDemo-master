@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.lxf.livedatademo"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def lifecycle_version = "1.1.1"
+    compile project(':common')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.14.1"
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
